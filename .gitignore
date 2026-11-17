@@ -1,0 +1,22 @@
+# Visual Studio / .NET
+.vs/
+bin/
+obj/
+packages/
+*.user
+*.suo
+*.cache
+TestResults/
+appsettings.Development.json
+
+# Node / Angular
+node_modules/
+dist/
+.angular/
+npm-debug.log*
+
+# OS / editors
+Thumbs.db
+.DS_Store
+.vscode/*
+!.vscode/extensions.json

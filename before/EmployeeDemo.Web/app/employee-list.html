@@ -1,0 +1,108 @@
+<div class="page-head">
+    <div>
+        <h1>Employees</h1>
+        <p>Manage your team members and their details.</p>
+    </div>
+    <a class="btn-gradient" href="#!/employees/new">
+        <svg class="i" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+        Add employee
+    </a>
+</div>
+
+<!-- Summary cards -->
+<div class="stats">
+    <div class="stat">
+        <span class="stat-icon tone-0">
+            <svg class="i" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+        </span>
+        <div><div class="stat-label">Employees</div><div class="stat-value">{{stats.count}}</div></div>
+    </div>
+    <div class="stat">
+        <span class="stat-icon tone-1">
+            <svg class="i" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+        </span>
+        <div><div class="stat-label">Active</div><div class="stat-value">{{stats.active}}</div></div>
+    </div>
+    <div class="stat">
+        <span class="stat-icon tone-2">
+            <svg class="i" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
+        </span>
+        <div><div class="stat-label">Departments</div><div class="stat-value">{{stats.departments}}</div></div>
+    </div>
+    <div class="stat">
+        <span class="stat-icon tone-3">
+            <svg class="i" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" /></svg>
+        </span>
+        <div><div class="stat-label">Total salaries</div><div class="stat-value">{{stats.salaries | number:0}}</div></div>
+    </div>
+</div>
+
+<div class="panel">
+    <div class="panel-toolbar">
+        <form class="search" ng-submit="load()" role="search">
+            <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+            <input type="text" placeholder="Search name or email, then press Enter" ng-model="search" aria-label="Search employees" />
+            <button type="button" class="clear" ng-click="clearSearch()" ng-show="search" title="Clear search">&times;</button>
+        </form>
+        <span class="result-count" ng-hide="loading">{{employees.length}} {{employees.length === 1 ? 'person' : 'people'}}</span>
+    </div>
+
+    <div class="alert-soft error" ng-show="error">{{error}}</div>
+
+    <!-- Loading placeholder -->
+    <div ng-show="loading">
+        <div class="skeleton-row" ng-repeat="n in [1, 2, 3, 4]">
+            <span class="skeleton circle"></span>
+            <span class="skeleton" style="width: 30%;"></span>
+            <span class="skeleton" style="width: 15%;"></span>
+            <span class="skeleton" style="width: 20%;"></span>
+        </div>
+    </div>
+
+    <div class="table-scroll" ng-show="!loading && employees.length">
+        <table class="table-modern">
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Department</th>
+                    <th class="text-right">Salary</th>
+                    <th>Hire date</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="e in employees track by e.EmployeeId">
+                    <td>
+                        <div class="person">
+                            <span class="avatar tone-{{e.DepartmentId % 6}}">{{(e.FirstName + ' ' + e.LastName) | initials}}</span>
+                            <div>
+                                <strong>{{e.FirstName}} {{e.LastName}}</strong>
+                                <small>{{e.Email}}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="pill tone-{{e.DepartmentId % 6}}">{{e.DepartmentName}}</span></td>
+                    <td class="text-right money">{{e.Salary | number:0}}</td>
+                    <td>{{e.HireDate | date:'dd MMM yyyy'}}</td>
+                    <td><span class="status" ng-class="e.IsActive ? 'on' : 'off'">{{e.IsActive ? 'Active' : 'Inactive'}}</span></td>
+                    <td class="text-right actions">
+                        <a class="icon-btn" href="#!/employees/{{e.EmployeeId}}/edit" title="Edit {{e.FirstName}}">
+                            <svg class="i" viewBox="0 0 24 24"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
+                        </a>
+                        <button type="button" class="icon-btn danger" ng-click="remove(e)" title="Delete {{e.FirstName}}">
+                            <svg class="i" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty" ng-show="!loading && !error && employees.length === 0">
+        <img src="images/empty-state.svg" alt="" />
+        <h3>No employees found</h3>
+        <p>Try a different search, or add a new employee.</p>
+    </div>
+</div>

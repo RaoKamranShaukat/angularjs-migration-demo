@@ -1,0 +1,102 @@
+<a class="back-link" href="#!/employees">
+    <svg class="i" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
+    Back to employees
+</a>
+
+<div class="panel form-panel">
+    <aside class="form-aside">
+        <img src="images/add-user.svg" alt="" />
+        <h3>{{isEdit ? 'Update details' : 'New team member'}}</h3>
+        <p>All fields are required. Each employee needs a unique email address.</p>
+    </aside>
+
+    <div class="form-main">
+        <h1>{{isEdit ? 'Edit employee' : 'Add employee'}}</h1>
+
+        <div class="alert-soft error" ng-show="error" role="alert">{{error}}</div>
+
+        <!-- novalidate: AngularJS does the validation, not the browser -->
+        <form name="employeeForm" novalidate ng-submit="save(employeeForm)">
+            <div class="row">
+                <div class="form-group col-sm-6"
+                     ng-class="{ 'has-error': (employeeForm.firstName.$touched || employeeForm.$submitted) && employeeForm.firstName.$invalid }">
+                    <label for="firstName">First name</label>
+                    <input id="firstName" name="firstName" class="form-control" placeholder="e.g. Ayesha"
+                           ng-model="employee.FirstName" required ng-maxlength="50" />
+                    <span class="help-block" ng-show="(employeeForm.firstName.$touched || employeeForm.$submitted) && employeeForm.firstName.$invalid">
+                        Required, max 50 characters.
+                    </span>
+                </div>
+
+                <div class="form-group col-sm-6"
+                     ng-class="{ 'has-error': (employeeForm.lastName.$touched || employeeForm.$submitted) && employeeForm.lastName.$invalid }">
+                    <label for="lastName">Last name</label>
+                    <input id="lastName" name="lastName" class="form-control" placeholder="e.g. Khan"
+                           ng-model="employee.LastName" required ng-maxlength="50" />
+                    <span class="help-block" ng-show="(employeeForm.lastName.$touched || employeeForm.$submitted) && employeeForm.lastName.$invalid">
+                        Required, max 50 characters.
+                    </span>
+                </div>
+
+                <div class="form-group col-sm-6"
+                     ng-class="{ 'has-error': (employeeForm.email.$touched || employeeForm.$submitted) && employeeForm.email.$invalid }">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" class="form-control" placeholder="name@company.com"
+                           ng-model="employee.Email" required ng-maxlength="100" />
+                    <span class="help-block" ng-show="(employeeForm.email.$touched || employeeForm.$submitted) && employeeForm.email.$invalid">
+                        A valid email is required.
+                    </span>
+                </div>
+
+                <div class="form-group col-sm-6"
+                     ng-class="{ 'has-error': (employeeForm.department.$touched || employeeForm.$submitted) && employeeForm.department.$invalid }">
+                    <label for="department">Department</label>
+                    <select id="department" name="department" class="form-control" required
+                            ng-model="employee.DepartmentId"
+                            ng-options="d.DepartmentId as d.Name for d in departments">
+                        <option value="">Select a department</option>
+                    </select>
+                    <span class="help-block" ng-show="(employeeForm.department.$touched || employeeForm.$submitted) && employeeForm.department.$invalid">
+                        Please select a department.
+                    </span>
+                </div>
+
+                <div class="form-group col-sm-6"
+                     ng-class="{ 'has-error': (employeeForm.salary.$touched || employeeForm.$submitted) && employeeForm.salary.$invalid }">
+                    <label for="salary">Salary</label>
+                    <input id="salary" name="salary" type="number" min="0" step="1000" class="form-control" placeholder="e.g. 150000"
+                           ng-model="employee.Salary" required />
+                    <span class="help-block" ng-show="(employeeForm.salary.$touched || employeeForm.$submitted) && employeeForm.salary.$invalid">
+                        Required, cannot be negative.
+                    </span>
+                </div>
+
+                <div class="form-group col-sm-6"
+                     ng-class="{ 'has-error': (employeeForm.hireDate.$touched || employeeForm.$submitted) && employeeForm.hireDate.$invalid }">
+                    <label for="hireDate">Hire date</label>
+                    <input id="hireDate" name="hireDate" type="date" class="form-control"
+                           ng-model="employee.HireDate" required />
+                    <span class="help-block" ng-show="(employeeForm.hireDate.$touched || employeeForm.$submitted) && employeeForm.hireDate.$invalid">
+                        Required.
+                    </span>
+                </div>
+
+                <div class="form-group col-sm-12">
+                    <label class="switch">
+                        <input type="checkbox" ng-model="employee.IsActive" />
+                        <span class="track"></span>
+                        Active employee
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-gradient" ng-disabled="saving">
+                    <span class="spinner" ng-show="saving"></span>
+                    {{saving ? 'Saving...' : (isEdit ? 'Save changes' : 'Add employee')}}
+                </button>
+                <a class="btn-soft" href="#!/employees">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

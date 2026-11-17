@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 440" role="img" aria-label="Illustration of an employee dashboard">
+  <defs>
+    <linearGradient id="hero-teal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="hero-indigo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a5b4fc"/>
+      <stop offset="1" stop-color="#6366f1"/>
+    </linearGradient>
+    <filter id="hero-shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1e1b4b" flood-opacity=".30"/>
+    </filter>
+  </defs>
+
+  <!-- decoration -->
+  <circle cx="440" cy="340" r="72" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="18"/>
+  <circle cx="70" cy="58" r="38" fill="#fff" fill-opacity=".08"/>
+  <circle cx="492" cy="178" r="6" fill="#fde68a"/>
+  <circle cx="24" cy="236" r="5" fill="#99f6e4"/>
+  <circle cx="262" cy="424" r="4" fill="#fbcfe8"/>
+  <path d="M30 150l6 6m0-6l-6 6" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- main window -->
+  <rect x="50" y="80" width="370" height="270" rx="18" fill="#fff" filter="url(#hero-shadow)"/>
+  <path d="M68 80h334a18 18 0 0 1 18 18v22H50V98a18 18 0 0 1 18-18z" fill="#eef2ff"/>
+  <circle cx="74" cy="100" r="5" fill="#f87171"/>
+  <circle cx="92" cy="100" r="5" fill="#fbbf24"/>
+  <circle cx="110" cy="100" r="5" fill="#34d399"/>
+  <rect x="140" y="94" width="120" height="12" rx="6" fill="#c7d2fe"/>
+
+  <!-- stat tiles -->
+  <rect x="72" y="138" width="100" height="56" rx="12" fill="#eef2ff"/>
+  <rect x="86" y="151" width="40" height="8" rx="4" fill="#a5b4fc"/>
+  <rect x="86" y="167" width="62" height="14" rx="6" fill="#4f46e5"/>
+  <rect x="185" y="138" width="100" height="56" rx="12" fill="#ecfdf5"/>
+  <rect x="199" y="151" width="40" height="8" rx="4" fill="#6ee7b7"/>
+  <rect x="199" y="167" width="50" height="14" rx="6" fill="#10b981"/>
+  <rect x="298" y="138" width="100" height="56" rx="12" fill="#fff7ed"/>
+  <rect x="312" y="151" width="40" height="8" rx="4" fill="#fdba74"/>
+  <rect x="312" y="167" width="56" height="14" rx="6" fill="#f59e0b"/>
+
+  <!-- table rows -->
+  <g>
+    <circle cx="88" cy="226" r="12" fill="#c7d2fe"/>
+    <rect x="110" y="217" width="96" height="8" rx="4" fill="#cbd5e1"/>
+    <rect x="110" y="230" width="64" height="6" rx="3" fill="#e2e8f0"/>
+    <rect x="336" y="218" width="58" height="16" rx="8" fill="#d1fae5"/>
+    <line x1="72" y1="248" x2="398" y2="248" stroke="#f1f5f9" stroke-width="2"/>
+  </g>
+  <g>
+    <circle cx="88" cy="270" r="12" fill="#fbcfe8"/>
+    <rect x="110" y="261" width="82" height="8" rx="4" fill="#cbd5e1"/>
+    <rect x="110" y="274" width="70" height="6" rx="3" fill="#e2e8f0"/>
+    <rect x="336" y="262" width="58" height="16" rx="8" fill="#d1fae5"/>
+    <line x1="72" y1="292" x2="398" y2="292" stroke="#f1f5f9" stroke-width="2"/>
+  </g>
+  <g>
+    <circle cx="88" cy="314" r="12" fill="#fed7aa"/>
+    <rect x="110" y="305" width="104" height="8" rx="4" fill="#cbd5e1"/>
+    <rect x="110" y="318" width="56" height="6" rx="3" fill="#e2e8f0"/>
+    <rect x="336" y="306" width="58" height="16" rx="8" fill="#e2e8f0"/>
+  </g>
+
+  <!-- floating chart card -->
+  <rect x="330" y="18" width="170" height="122" rx="16" fill="#fff" filter="url(#hero-shadow)"/>
+  <rect x="348" y="34" width="70" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="348" y="48" width="44" height="6" rx="3" fill="#f1f5f9"/>
+  <rect x="352" y="88" width="18" height="38" rx="5" fill="url(#hero-indigo)"/>
+  <rect x="378" y="70" width="18" height="56" rx="5" fill="url(#hero-teal)"/>
+  <rect x="404" y="96" width="18" height="30" rx="5" fill="#f9a8d4"/>
+  <rect x="430" y="62" width="18" height="64" rx="5" fill="url(#hero-indigo)"/>
+  <rect x="456" y="80" width="18" height="46" rx="5" fill="#fcd34d"/>
+
+  <!-- floating profile card -->
+  <rect x="10" y="300" width="200" height="96" rx="16" fill="#fff" filter="url(#hero-shadow)"/>
+  <circle cx="52" cy="348" r="24" fill="#e0e7ff"/>
+  <circle cx="52" cy="341" r="9" fill="#6366f1"/>
+  <path d="M36 366c2-10 9-14 16-14s14 4 16 14z" fill="#6366f1"/>
+  <circle cx="70" cy="366" r="9" fill="#10b981" stroke="#fff" stroke-width="3"/>
+  <path d="M66 366l3 3 5-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="88" y="330" width="96" height="10" rx="5" fill="#1e1b4b" fill-opacity=".8"/>
+  <rect x="88" y="348" width="66" height="8" rx="4" fill="#cbd5e1"/>
+  <rect x="88" y="364" width="50" height="16" rx="8" fill="#d1fae5"/>
+
+  <!-- floating "migrated" pill -->
+  <rect x="290" y="372" width="170" height="44" rx="22" fill="#fff" filter="url(#hero-shadow)"/>
+  <circle cx="314" cy="394" r="13" fill="#4f46e5"/>
+  <path d="M308 394h11m-4-4 4 4-4 4" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="336" y="399" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="14" font-weight="700" fill="#1e1b4b">Ready for .NET 8</text>
+</svg>

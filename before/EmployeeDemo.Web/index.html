@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="employeeApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Employee Manager (AngularJS 1.8)</title>
+    <link rel="icon" href="images/logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body ng-controller="ShellController">
+
+    <!-- Top bar: only when logged in and not on the login page -->
+    <header class="topbar" ng-if="auth.currentUser && !isLoginPage()" ng-cloak>
+        <div class="topbar-inner">
+            <a class="brand" href="#!/employees">
+                <img src="images/logo.svg" alt="" />
+                <span>Employee Manager</span>
+            </a>
+            <span class="spacer"></span>
+            <span class="stack-badge"><strong>BEFORE</strong>AngularJS 1.8 + .NET Framework 4.8</span>
+            <div class="user-chip">
+                <span class="avatar avatar-sm">{{auth.currentUser.FullName | initials}}</span>
+                <span class="user-name">{{auth.currentUser.FullName}}</span>
+            </div>
+            <button type="button" class="btn-ghost" ng-click="logout()" title="Sign out">
+                <svg class="i" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg>
+                <span class="user-name">Sign out</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ngRoute swaps the login / list / form templates in here -->
+    <main ng-class="{ page: !isLoginPage() }">
+        <div ng-view class="view-fade"></div>
+    </main>
+
+    <!-- Libraries (from CDN, no build step, no npm) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.3/angular-route.min.js"></script>
+
+    <!-- App scripts: the order matters (module first) -->
+    <script src="app/app.module.js"></script>
+    <script src="app/auth.service.js"></script>
+    <script src="app/employee.service.js"></script>
+    <script src="app/shell.controller.js"></script>
+    <script src="app/login.controller.js"></script>
+    <script src="app/employee-list.controller.js"></script>
+    <script src="app/employee-form.controller.js"></script>
+</body>
+</html>
