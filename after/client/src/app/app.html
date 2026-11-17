@@ -1,0 +1,28 @@
+<!-- Top bar: only when logged in and not on the login page -->
+@if (auth.currentUser(); as user) {
+  @if (!isLoginPage()) {
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" routerLink="/employees">
+          <img src="images/logo.svg" alt="" />
+          <span>Employee Manager</span>
+        </a>
+        <span class="spacer"></span>
+        <span class="stack-badge after"><strong>AFTER</strong>Angular 22 + .NET 10</span>
+        <div class="user-chip">
+          <span class="avatar avatar-sm">{{ user.fullName | initials }}</span>
+          <span class="user-name">{{ user.fullName }}</span>
+        </div>
+        <button type="button" class="btn-ghost" (click)="logout()" title="Sign out">
+          <svg class="i" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg>
+          <span class="user-name">Sign out</span>
+        </button>
+      </div>
+    </header>
+  }
+}
+
+<!-- The router swaps the login / list / form pages in here -->
+<main [class.page]="!isLoginPage()">
+  <router-outlet />
+</main>

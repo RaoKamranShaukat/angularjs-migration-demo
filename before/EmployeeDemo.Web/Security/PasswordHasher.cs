@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 namespace EmployeeDemo.Web.Security
 {
     // PBKDF2-SHA256, 100,000 iterations, 32-byte hash.
-    // .NET 8 produces exactly the same bytes with Rfc2898DeriveBytes.Pbkdf2(...),
+    // .NET 10 produces exactly the same bytes with Rfc2898DeriveBytes.Pbkdf2(...),
     // so the same Users table works for both the old and the new app.
     public static class PasswordHasher
     {

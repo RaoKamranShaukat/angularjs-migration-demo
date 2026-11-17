@@ -87,5 +87,5 @@
   <rect x="290" y="372" width="170" height="44" rx="22" fill="#fff" filter="url(#hero-shadow)"/>
   <circle cx="314" cy="394" r="13" fill="#4f46e5"/>
   <path d="M308 394h11m-4-4 4 4-4 4" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="336" y="399" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="14" font-weight="700" fill="#1e1b4b">Ready for .NET 8</text>
+  <text x="336" y="399" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="14" font-weight="700" fill="#1e1b4b">Ready for .NET 10</text>
 </svg>

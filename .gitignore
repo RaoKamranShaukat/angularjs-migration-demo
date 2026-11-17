@@ -20,3 +20,6 @@ Thumbs.db
 .DS_Store
 .vscode/*
 !.vscode/extensions.json
+
+# Angular build output (ng build writes the client into the API)
+after/EmployeeDemo.Api/wwwroot/
